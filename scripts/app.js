@@ -1,6 +1,8 @@
 var active = false;
 var logEl = document.getElementById('log');
+var navlogEl = document.getElementById('navlog');
 var commandLog = document.getElementById('commands');
+var navdataLog = document.getElementById('navdata');
 var message = document.getElementById('message');
 var failed = false;
 
@@ -11,6 +13,10 @@ function clearLog() {
 function log(msg) {
   logEl.textContent = msg;
 //  logEl.scrollTop = 10000000;
+}
+
+function navlog(msg) {
+  navlogEl.textContent = msg;
 }
 
 function onDroneConnected() {
@@ -28,6 +34,7 @@ function onDroneConnectionFailed() {
 
 DRONE.Gamepad.onConnected = function() {
   commandLog.style.display = "block";
+  navdataLog.style.display = "block";
   DRONE.API.init(onDroneConnected, onDroneConnectionFailed);
 };
 
